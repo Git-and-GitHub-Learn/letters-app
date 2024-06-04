@@ -2,6 +2,8 @@
 
 from shiny import ui
 
+from utils import letters
+
 
 ui = ui.page_auto(
     ui.row(ui.h1("Letters App")),
@@ -10,12 +12,12 @@ ui = ui.page_auto(
         ui.input_select(
             id="file_select",
             label="Select a letter",
-            choices=["Sebástian", "Andrés", "Narváez"],
+            choices=letters(),
         ),
     ),
     ui.row(
         ui.card(
-            ui.output_text(id="letter"),
+            ui.output_text_verbatim(id="letter"),
         ),
     ),
 )
