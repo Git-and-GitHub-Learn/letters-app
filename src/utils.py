@@ -1,31 +1,30 @@
-"""Utilities to load files."""
+"""Utilities to load files"""
 
 import os
 import pathlib
 
-from typing import Optional, Union, Tuple
+from typing import Union, Tuple
 
 
 LETTERS_PATH = pathlib.Path(__file__).parents[1] / "letters"
 
 
-def validate_path(path: Optional[Union[str, pathlib.Path]]) -> pathlib.Path:
+def validate_path(path: Union[str, pathlib.Path]) -> pathlib.Path:
     """Validate the specified path."""
 
     if isinstance(path, str):
         return pathlib.Path(path)
-    elif isinstance(path, pathlib.Path):
+    if isinstance(path, pathlib.Path):
         return path
-    else:
-        raise TypeError(f"{path} must be str or pathlib.Path")
+    raise TypeError(f"{path} must be str or pathlib.Path")
 
 
-def letters(path: Optional[Union[str, pathlib.Path]] = LETTERS_PATH) -> Tuple[str]:
+def letters(path: Union[str, pathlib.Path] = LETTERS_PATH) -> Tuple[str]:
     """Return the list of letters in the specified folder.
 
     Parameters
     ----------
-    path : str | pathlib.Path (Optional)
+    path : str | pathlib.Path
         Path to letters.
 
     Returns
@@ -40,16 +39,14 @@ def letters(path: Optional[Union[str, pathlib.Path]] = LETTERS_PATH) -> Tuple[st
     return tuple(files)
 
 
-def read_letter(
-    filename: str, path: Optional[Union[str, pathlib.Path]] = LETTERS_PATH
-) -> str:
+def read_letter(filename: str, path: Union[str, pathlib.Path] = LETTERS_PATH) -> str:
     """Return the text in the letter if this exists
 
     Parametters
     -----------
     file : str
         filename.
-    path : str | pathlib.Path (Optional)
+    path : str | pathlib.Path
         Path to letters.
 
     Returns
@@ -67,9 +64,3 @@ def read_letter(
         content = file.read()
 
     return content
-
-
-if __name__ == "__main__":
-    some_files = letters()
-    one_file = some_files[0]
-    print(read_letter(one_file))

@@ -2,7 +2,7 @@
 
 from shiny import ui
 
-from utils import letters
+from src.utils import letters
 
 
 ui = ui.page_auto(

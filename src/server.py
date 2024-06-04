@@ -2,7 +2,7 @@
 
 from shiny import Inputs, render
 
-from utils import read_letter
+from src.utils import read_letter
 
 
 def server(inputs: Inputs):
